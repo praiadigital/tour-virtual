@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tour Virtual — visitas por vídeo | Praia Digital</title>
+<meta name="description" content="Agende visitas virtuais de imóveis no litoral paulista: escolha cidade, data e horário e receba o link da videochamada.">
+<link rel="canonical" href="https://praia.digital/tour-virtual/">
+<meta name="robots" content="index, follow">
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif}
+body{margin:0;background:#18181b;color:#f4f4f5;min-height:100vh}
+.wrap{max-width:680px;margin:0 auto;padding:40px 20px}
+.card{background:#27272a;border:1px solid #3f3f46;border-radius:16px;padding:24px;margin-top:20px}
+input,select{width:100%;padding:10px;border-radius:10px;border:1px solid #52525b;background:#18181b;color:#f4f4f5;margin-top:6px;box-sizing:border-box}
+button{background:#0ea5e9;color:#fff;border:0;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;margin-top:14px}
+label{font-size:14px;font-weight:600;margin-top:10px;display:block}
+.ok{border-color:#10b981;background:#022c22}
+.btn{display:inline-block;margin-top:16px;padding:12px 18px;border-radius:12px;background:#3b82f6;color:#fff;text-decoration:none;font-weight:700}
+small{opacity:.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📹 Tour Virtual</h1>
+  <p>Visite imóveis no litoral sem sair de casa: agende uma videochamada guiada com um especialista local.</p>
+  <div class="card" id="form">
+    <label>Seu nome</label><input id="nome" placeholder="Seu nome">
+    <label>Cidade de interesse</label>
+    <select id="cidade"><option>Santos</option><option>Guarujá</option><option>Praia Grande</option><option>Bertioga</option><option>São Vicente</option><option>Mongaguá</option><option>Itanhaém</option><option>Peruíbe</option></select>
+    <label>Tipo de imóvel</label>
+    <select id="tipo"><option>Apartamento vista mar</option><option>Casa em condomínio</option><option>Cobertura</option><option>Studio</option></select>
+    <label>Data preferida</label><input id="data" type="date">
+    <label>Horário</label>
+    <select id="hora"><option>10h00</option><option>14h00</option><option>16h00</option><option>19h00</option></select>
+    <button onclick="agendar()">Agendar tour virtual</button>
+  </div>
+  <div class="card ok" id="conf" style="display:none"></div>
+  <small>Agendamento demonstrativo — a confirmação real chega por WhatsApp.</small><br>
+  <a class="btn" href="https://praiadigital.github.io/match-imovel/">Não sabe a cidade? Match Imóvel</a>
+  <a class="btn" href="https://praiadigital.github.io/guia-praias/">Guia de Praias</a>
+  <a class="btn" href="https://praiadigital.github.io/corretores/">Kit do Corretor</a>
+</div>
+<script>
+function agendar(){
+  const n=document.getElementById('nome').value.trim();
+  const d=document.getElementById('data').value;
+  if(!n||!d){alert('Preencha nome e data.');return;}
+  const c=document.getElementById('cidade').value,t=document.getElementById('tipo').value,h=document.getElementById('hora').value;
+  const dt=new Date(d+'T00:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+  const el=document.getElementById('conf');
+  el.style.display='block';
+  el.innerHTML='<h2>✅ Tour agendado!</h2><p><strong>'+n+'</strong>, seu tour virtual de <strong>'+t+'</strong> em <strong>'+c+'</strong> ficou para <strong>'+dt+' às '+h+'</strong>.</p><p>O link da videochamada será enviado por WhatsApp 30 min antes. Prepare suas dúvidas sobre documentação e condomínio!</p>';
+  el.scrollIntoView({behavior:'smooth'});
+}
+</script>
+<hr style="margin:40px 0 20px;border:none;border-top:1px solid #3f3f46">
+<nav style="font-size:.95em;text-align:center;padding:0 16px 32px;color:#a1a1aa">
+<strong>Rede Praia Digital:</strong><br>
+<a style="color:#a1a1aa" href="https://praia.digital/">Praia Digital</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/apps/">Todos os apps</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/match-imovel/">Match Imóvel</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/guia-praias/">Guia de Praias</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/comparador-cidades/">Comparador de Cidades</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/simulador-credito/">Simulador de Crédito</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/ferramentas/">Ferramentas</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/corretores/">Kit do Corretor</a> ·
+<a style="color:#a1a1aa" href="https://praiadigital.github.io/blog-litoral/">Blog</a>
+</nav>
+</body>
+</html>
